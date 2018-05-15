@@ -2,7 +2,7 @@
 
 module alu(input [31:0] x, input [31:0] y, input [3:0] alu_ctrl, output reg [31:0] result, output reg zero);
     
-    reg [31:0] sum; //create a reg for sum if addition is selected
+    wire [31:0] sum; //create a reg for sum if addition is selected
     
     thirty_two_bit_adder adder(.x(x), .y(y), .sum(sum)); //instantiate 32-bit adder
     
