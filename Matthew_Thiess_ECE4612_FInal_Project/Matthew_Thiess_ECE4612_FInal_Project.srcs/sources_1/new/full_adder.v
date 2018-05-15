@@ -1,9 +1,9 @@
 `timescale 1ns / 1ps
 
-module full_adder(x, y, c_in, sum, c_out);
+module full_adder(input wire x, input wire y, input wire c_in, output wire sum, output wire c_out);
 
-input x, y, c_in;
-output sum, c_out;
+//input x, y, c_in;
+//output sum, c_out;
 wire co_1, co_2; //wires for internal carry out
 wire sum_internal; //wire for sum from first adder
 

@@ -1,12 +1,12 @@
 `timescale 1ns / 1ps
 
-module sixteen_bit_adder(x[15:0], y[15:0], c_in, sum[15:0], c_out);
+module sixteen_bit_adder(input wire [15:0] x, input wire [15:0] y, input wire c_in, output wire [15:0] sum, output wire c_out);
 
-input [15:0]x;
-input [15:0]y;
-input c_in;
-output [15:0]sum;
-output c_out;
+//input [15:0]x;
+//input [15:0]y;
+//input c_in;
+//output [15:0]sum;
+//output c_out;
 
 wire co_1, co_2, co_3; //wires for carries between the full adders
 

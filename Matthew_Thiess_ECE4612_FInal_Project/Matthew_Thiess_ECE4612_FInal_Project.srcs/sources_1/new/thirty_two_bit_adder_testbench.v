@@ -5,7 +5,8 @@ module thirty_two_bit_adder_testbench;
 reg [31:0]x;
 reg [31:0]y;
 reg c_in;
-wire [31:0]sum, c_out;
+wire [31:0]sum;
+wire c_out;
 
 thirty_two_bit_adder uut(.x(x), .y(y), .c_in(c_in), .sum(sum), .c_out(c_out));
 

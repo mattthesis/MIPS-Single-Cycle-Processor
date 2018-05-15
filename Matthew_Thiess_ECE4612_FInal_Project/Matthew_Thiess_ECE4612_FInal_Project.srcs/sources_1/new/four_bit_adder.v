@@ -1,12 +1,12 @@
 `timescale 1ns / 1ps
 
-module four_bit_adder(x[3:0], y[3:0], c_in, sum[3:0], c_out);
+module four_bit_adder(input wire [3:0] x, input wire [3:0] y, input wire c_in, output wire [3:0] sum, output wire c_out);
 
-input [3:0]x;
-input [3:0]y;
-input c_in;
-output [3:0]sum;
-output c_out;
+//input [3:0]x;
+//input [3:0]y;
+//input c_in;
+//output [3:0]sum;
+//output c_out;
 
 wire co_1, co_2, co_3; //wires for carries between the full adders
 
