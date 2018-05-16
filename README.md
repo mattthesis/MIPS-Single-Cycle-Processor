@@ -6,7 +6,7 @@ This project is a simulation of a single-cycled processor based on the MIPS arch
 
 **_The below figure gives an overview of the datapath used in the processor._**
 
-![Single Cycle Processor Datapath](processor_datapath.png)
+![Single Cycle Processor Datapath](mips_processor\processor_datapath.png)
 
 ## Current Supported Instructions
 + `lw`
