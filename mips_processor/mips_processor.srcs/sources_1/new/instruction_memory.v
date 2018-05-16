@@ -1,14 +1,17 @@
 `timescale 1ns / 1ps
 
-module instruction_memory(input wire clk, input wire [31:0] pc, output reg [31:0] instruction);
-
-//input [31:0]addr;
-//output [31:0]instruction;
+module instruction_memory(input wire clk, input wire [31:0] pc, output reg [31:0] instruction, input wire reset);
 
 reg [31:0] instruction_mem [0:255];
 
 //initialize instruction memory with program
 initial begin
+//small 3 instruction addition program to test
+//    instruction_mem[0]=32'h010E4020;
+//    instruction_mem[4]=32'h010E4020;
+//    instruction_mem[8]=32'h010E4020;
+
+
     instruction_mem[0]=32'h8C090004; //lw $t1, 0x4($zero)
     instruction_mem[4]=32'h8C0A0010; //lw $t2, 0x10($zero)
     instruction_mem[8]=32'h8C0C0014; //lw $t4, 0x14($zero)
@@ -18,23 +21,25 @@ initial begin
     instruction_mem[24]=32'h0149582A; //slt $t3, $t2, $t1
     instruction_mem[28]=32'h11600004; //beq $t3, $zero, less (offset=0x4)
     
+    //when i>j
     instruction_mem[32]=32'h018F4018; //mul $t0, $t4, $t7
     instruction_mem[36]=32'h010E4020; //add $t0, $t0, $t6
     instruction_mem[40]=32'h010D401A; //div $t0, $t0, $t5
     instruction_mem[44]=32'h0800000F; //j save (offset=0xF)
     
-    //less
+    //tag: less, when i<j
     instruction_mem[48]=32'h018D4018; //mul $t0, $t4, $t5
     instruction_mem[52]=32'h010E4022; //sub $t0, $t0, $t6
     instruction_mem[56]=32'h010F4022; //sub $t0, $t0, $t7
     
-    //save
-    instruction_mem[60]=32'hAC080020; //sw $t0, 0x20($zero)
+    //tag: save
+    instruction_mem[60]=32'hAC080024; //sw $t0, 0x24($zero)
 end
 
 //update the selected instruction each clock cycle
-always@(posedge clk) begin
-    instruction = instruction_mem[pc]; //program counter gives address of desired instruction
+always@(posedge clk or posedge reset) begin
+    if(reset==1'b1) instruction=instruction_mem[0];
+    else instruction = instruction_mem[pc]; //program counter gives address of desired instruction
 end
 
 

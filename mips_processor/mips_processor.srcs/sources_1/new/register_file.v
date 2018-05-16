@@ -5,6 +5,12 @@ module register_file(input clk, input [4:0] read_reg1, input [4:0] read_reg2, in
                     
     reg [31:0] registers [0:31]; //create 32 32-bit registers
     
+//dummy addition values used to test addition
+//    initial begin
+//        registers[8]= 4;
+//        registers[14]= 4;
+//    end
+    
     //if write_en is set, update data on the rising edge of the clock
     //
     always@(posedge clk) begin

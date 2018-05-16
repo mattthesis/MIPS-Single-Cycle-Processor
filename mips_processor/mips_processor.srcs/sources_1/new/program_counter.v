@@ -8,7 +8,7 @@ initial begin
 end
 
 //update the program counter on each rising clock edge
-always@(posedge clk) begin
+always@(posedge clk or posedge reset) begin
     if(reset==1'b1) pc = 32'b0;
     else pc = next_pc;
 end
