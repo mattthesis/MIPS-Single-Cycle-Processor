@@ -37,3 +37,5 @@
 *.wcfg
 *.xpr
 mips_processor.sim/sim_1/behav/xsim
+*.html
+mips_processor/mips_processor.sim/sim_1/behav/xsim/glbl.v
